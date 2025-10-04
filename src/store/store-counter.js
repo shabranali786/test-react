@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userProductSlice from "./features/user_product";
+import factoryName from "./features/counterSlice";
+
 const store = configureStore({
   reducer: {
-    form: userProductSlice,
+    shopName: factoryName,
   },
 });
 

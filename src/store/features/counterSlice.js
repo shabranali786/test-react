@@ -1,19 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-const counterSlice = createSlice({
-  name: "counter",
+const factoryName = createSlice({
+  name: "factory-manager",
   initialState: { count: 0 },
   reducers: {
-    increment: (state) => {
+    increment: (state, action) => {
       state.count += 1;
     },
-    decrement: (state) => {
+    decrement: (state, action) => {
       state.count -= 1;
     },
-    reset: (state) => {
+    reset: (state, action) => {
       state.count = 0;
     },
   },
 });
 
-export const { increment, decrement, reset } = counterSlice.actions;
-export default counterSlice.reducer;
+export const { increment, decrement, reset } = factoryName.actions;
+export default factoryName.reducer;
