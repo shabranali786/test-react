@@ -1,9 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userProductSlice from "./features/user_product";
+import employeeEnventorySlice from "./features/employee-enventory";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+const configPersist = {
+  key: "employeeEnventory",
+  storage,
+};
+const persistedReducer = persistReducer(
+  configPersist,
+  employeeEnventorySlice.reducer
+);
 const store = configureStore({
   reducer: {
-    form: userProductSlice,
+    employeeEnventory: persistedReducer,
   },
 });
-
-export default store;
+const persistor = persistStore(store);
+export { persistor, store };
