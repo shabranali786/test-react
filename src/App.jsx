@@ -2,7 +2,6 @@ import { useState } from "react";
 
 // import store from "./store/store";
 import "./main.css";
-import { Provider } from "react-redux";
 import {
   createBrowserRouter,
   createRoutesFromElements,
