@@ -4,6 +4,7 @@ const employeeEnventorySlice = createSlice({
   initialState: {
     employeeData: [],
     inventoryData: [],
+    Mode: "light"
   },
   reducers: {
     addEmployee: (state, action) => {
@@ -11,6 +12,9 @@ const employeeEnventorySlice = createSlice({
     },
     addinventory: (state, action) => {
       state.inventoryData.push(action.payload);
+    },
+      theme: (state, action) => {
+     state.Mode = action.payload
     },
     clearEmployeeData: (state) => {
       state.employeeData = [];
@@ -26,5 +30,6 @@ export const {
   addinventory,
   clearEmployeeData,
   clearInventoryData,
+  theme,
 } = employeeEnventorySlice.actions;
 export default employeeEnventorySlice;

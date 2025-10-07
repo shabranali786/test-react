@@ -4,6 +4,7 @@ const userProductSlice = createSlice({
   initialState: {
     userData: [],
     productData: [],
+    Mode: "light"
   },
   reducers: {
     addUser: (state, action) => {
@@ -12,8 +13,9 @@ const userProductSlice = createSlice({
     addProduct: (state, action) => {
       state.productData.push(action.payload);
     },
+  
   },
 });
 
-export const { addUser, addProduct } = userProductSlice.actions;
+export const { addUser, addProduct, theme } = userProductSlice.actions;
 export default userProductSlice.reducer;

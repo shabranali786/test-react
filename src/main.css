@@ -1,1 +1,10 @@
 @import "tailwindcss";
+body.dark{
+        background: black;
+        &  * {
+            color: white !important;
+        }
+        .bg-white{
+            background: rgba(0,0,0,0.5);
+        }
+    }
