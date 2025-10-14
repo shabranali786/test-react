@@ -24,31 +24,38 @@ function Home() {
   const inputChange = (e) => {
     setEmployee({ ...isEmployee, [e.target.name]: e.target.value });
     setInventory({ ...isInventory, [e.target.name]: e.target.value });
-    if(isError[e.target.name]){
-      setError((prev) => ({...prev, [e.target.name]: ""}))
+    if (isError[e.target.name]) {
+      setError((prev) => ({ ...prev, [e.target.name]: "" }));
     }
-    
   };
-  const Validation = () => {
-    const newError = {}
-     if(!isEmployee.name.trim()) {
-       newError.name = "name is Required"
+  const Validation = (formType) => {
+    console.log({ validationType: formType });
+    const newError = {};
+     if (!isEmployee.name.trim()) {
+       newError.name = "name is Required";
      } else if (isEmployee.name.trim().length < 3) {
-       newError.name = "alleast 3 Charators of Alphabates"
+       newError.name = "alleast 3 Charators of Alphabates";
      }
-      if (!isEmployee.department.trim()){
-      newError.department = "department is required"
+     if (!isEmployee.department.trim()) {
+       newError.department = "department is required";
      }
-     return newError;
-  }
+    if (!isInventory.itemName.trim()) {
+      newError.itemName = "Item is Required";
+    }
+    if (!isInventory.quantity) {
+      newError.itemName = "quantity is Required";
+    }
+
+    return newError;
+  };
   const formSubmit = (formType, e) => {
     e.preventDefault();
     console.log(formType);
     const validationErrors = Validation();
-    console.log(Object.keys(validationErrors))
-    if(Object.keys(validationErrors).length > 0) {
+    console.log(Object.keys(validationErrors));
+    if (Object.keys(validationErrors).length > 0) {
       setError(validationErrors);
-      return
+      return;
     }
     // console.log(d);
     if (formType === "employeeform") {
@@ -90,7 +97,6 @@ function Home() {
     }
   };
 
-
   return (
     <div className="min-h-screen  p-4 md:p-6">
       {/* Header */}
@@ -131,7 +137,9 @@ function Home() {
               <input
                 type="text"
                 placeholder="e.g. Ali Khan"
-                className={`w-full px-3 py-2 border  rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${isError.name ? 'border-red-600': 'border-gray-300'}`}
+                className={`w-full px-3 py-2 border  rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  isError.name ? "border-red-600" : "border-gray-300"
+                }`}
                 value={isEmployee.name}
                 name="name"
                 onChange={inputChange}
@@ -144,7 +152,9 @@ function Home() {
               <input
                 type="text"
                 placeholder="e.g. Marketing"
-                className={`w-full px-3 py-2 border  rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${isError.department ? 'border-red-600': 'border-gray-300'}`}
+                className={`w-full px-3 py-2 border  rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  isError.department ? "border-red-600" : "border-gray-300"
+                }`}
                 value={isEmployee.department}
                 name="department"
                 onChange={inputChange}
@@ -208,7 +218,9 @@ function Home() {
               <input
                 type="text"
                 placeholder="e.g. Laptop"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+                  isError.itemName ? "border-red-600" : "border-gray-300"
+                }`}
                 name="itemName"
                 value={isInventory.itemName}
                 onChange={inputChange}
@@ -221,7 +233,9 @@ function Home() {
               <input
                 type="number"
                 placeholder="e.g. 10"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+                  isError.quantity ? "border-red-600" : "border-gray-300"
+                }`}
                 name="quantity"
                 value={isInventory.quantity}
                 onChange={inputChange}
